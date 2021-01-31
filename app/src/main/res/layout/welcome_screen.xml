@@ -16,8 +16,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="126dp"
-                android:layout_height="157dp"
+                android:layout_width="@dimen/_125sdp"
+                android:layout_height="@dimen/_155sdp"
                 android:paddingBottom="10dp"
                 android:src="@drawable/main_top"
                 android:contentDescription="@string/todo" />
@@ -29,13 +29,13 @@
                 android:layout_marginTop="40dp"
                 android:text="@string/welcome_to_you"
                 android:textColor="#68329b"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/_310sdp"
+            android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_marginStart="5dp"
             android:background="@drawable/chat" />
@@ -62,14 +62,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_700"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="15dp"
             android:gravity="center|bottom">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/browse_as_guest"
-                android:textSize="@dimen/_18sdp"
+                android:textSize="18dp"
                 android:gravity="center"
                 android:textColor="@color/white"/>
 
