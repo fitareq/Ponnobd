@@ -63,13 +63,13 @@
             android:layout_height="wrap_content"
             android:background="@color/purple_700"
             android:layout_marginTop="15dp"
-            android:gravity="center|bottom">
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/browse_as_guest"
-                android:textSize="18dp"
+                android:textSize="@dimen/_16sdp"
                 android:gravity="center"
                 android:textColor="@color/white"/>
 

@@ -65,6 +65,9 @@ dependencies {
     //view model
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
     //live data
+    //meowBottomNavigation
+    implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
+
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0'
     implementation "androidx.fragment:fragment:1.2.5"

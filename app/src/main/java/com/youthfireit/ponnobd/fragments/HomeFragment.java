@@ -48,16 +48,16 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         View v = binding.getRoot();
 
-
         binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                display(1);
+                /*display(1);*/
 
             }
         });
@@ -66,15 +66,11 @@ public class HomeFragment extends Fragment {
         binding.productRecyclerview.setLayoutManager(layoutManager);
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        display(1);
-        viewModel.getProducts().observe(getViewLifecycleOwner(),products -> {
+        /*display(1);*/
+       /* viewModel.getProducts().observe(getViewLifecycleOwner(),products -> {
             adapter = new ProductsAdapter(products);
             binding.productRecyclerview.setAdapter(adapter);
-        });
-
-
-
-
+        });*/
 
 
 
@@ -98,13 +94,14 @@ public class HomeFragment extends Fragment {
 
             }
         });*/
+
         return v;
     }
 
-void display(int page)
+/*void display(int page)
 {
     viewModel.loadProducts(page);
-}
+}*/
 
 
 }

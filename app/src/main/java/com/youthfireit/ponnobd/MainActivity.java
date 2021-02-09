@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.youthfireit.ponnobd.databinding.ActivityMainBinding;
 import com.youthfireit.ponnobd.fragments.HomeFragment;
 import com.youthfireit.ponnobd.models.ProductImages;
@@ -23,9 +24,14 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static int ID_HOME = 1;
+    private final static int WISH_LIST = 2;
+    private final static int CART = 3;
+    private final static int ACCOUNT = 4;
 
     ActivityMainBinding binding;
     private FragmentTransaction fragmentTransaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,17 +41,62 @@ public class MainActivity extends AppCompatActivity {
         setContentView(v);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container,new HomeFragment()).addToBackStack(null).commit();
+        fragmentTransaction.add(R.id.fragment_container, new HomeFragment()).addToBackStack(null).commit();
+
+        binding.bottomNav.add(new MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_outline_home));
+        binding.bottomNav.add(new MeowBottomNavigation.Model(WISH_LIST, R.drawable.ic_outline_favorite));
+        binding.bottomNav.add(new MeowBottomNavigation.Model(ACCOUNT, R.drawable.ic_outline_account_circle));
+        binding.bottomNav.add(new MeowBottomNavigation.Model(CART,R.drawable.ic_outline_shopping_cart));
+
+        binding.bottomNav.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+                switch (item.getId()){
+                    case ID_HOME:
+                        Toast.makeText(MainActivity.this, "Chumuluku_Home", Toast.LENGTH_SHORT).show();
+                        break;
+                    case WISH_LIST:
+                        Toast.makeText(MainActivity.this, "Chumuluku_wishList", Toast.LENGTH_SHORT).show();
+                        break;
+                    case ACCOUNT:
+                        Toast.makeText(MainActivity.this, "Chumuluku_account", Toast.LENGTH_SHORT).show();
+                        break;
+                    case CART:
+                        Toast.makeText(MainActivity.this, "Chumuluku_cart", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+
+        binding.bottomNav.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                // your codes
 
 
+            }
+
+        });
+        binding.bottomNav.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+                // your codes
+                switch (item.getId()) {
+                    case ID_HOME:
+                        Toast.makeText(MainActivity.this, "Home_again", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+
+            }
+        });
+        binding.bottomNav.show(ID_HOME, true);
 
         /*getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_container,new HomeFragment())
                 .commit();*/
     }
-
-
 
 
 }
