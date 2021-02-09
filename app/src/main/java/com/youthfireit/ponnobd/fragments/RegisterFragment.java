@@ -10,13 +10,19 @@ import android.view.ViewGroup;
 
 import com.youthfireit.ponnobd.R;
 
+
 public class RegisterFragment extends Fragment {
+
+
     private View v;
+
 
 
     public RegisterFragment() {
         // Required empty public constructor
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,4 +32,8 @@ public class RegisterFragment extends Fragment {
 
         return v;
     }
+
+
+
+
 }

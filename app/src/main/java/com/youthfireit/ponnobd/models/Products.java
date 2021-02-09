@@ -1,156 +1,130 @@
 package com.youthfireit.ponnobd.models;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-@Entity(tableName = "all_products")
+
 public class Products {
 
 
-    @NonNull
-    @PrimaryKey
-    @ColumnInfo(name = "id")
     @SerializedName("id")
-    private Integer productId;
+    private final Integer productId;
 
-    @ColumnInfo(name = "name")
+
     @SerializedName("name")
-    private String productName;
+    private final String productName;
 
-    @ColumnInfo(name = "slug")
+
     @SerializedName("slug")
-    private String productSlug;
+    private final String productSlug;
 
-    @ColumnInfo(name = "date_created")
+
     @SerializedName("date_created")
-    private String productdateCreated;
+    private final String productdateCreated;
 
-    @ColumnInfo(name = "date_created_gmt")
+
     @SerializedName("date_created_gmt")
-    private String productDateCreatedGmt;
+    private final String productDateCreatedGmt;
 
-    @ColumnInfo(name = "date_modified")
+
     @SerializedName("date_modified")
-    private String productDateModified;
+    private final String productDateModified;
 
-    @ColumnInfo(name = "date_modified_gmt")
+
     @SerializedName("date_modified_gmt")
-    private String productDateModifiedGmt;
+    private final String productDateModifiedGmt;
 
-    @ColumnInfo(name = "type")
+
     @SerializedName("type")
-    private String productType;
+    private final String productType;
 
-    @ColumnInfo(name = "status")
+
     @SerializedName("status")
-    private String productStatus;
+    private final String productStatus;
 
-    @ColumnInfo(name = "featured")
+
     @SerializedName("featured")
-    private Boolean productFeatured;
+    private final Boolean productFeatured;
 
-    @ColumnInfo(name = "catalog_visibility")
+
     @SerializedName("catalog_visibility")
-    private String productCatalogVisibility;
+    private final String productCatalogVisibility;
 
-    @ColumnInfo(name = "description")
     @SerializedName("description")
-    private String productDescription;
+    private final String productDescription;
 
-    @ColumnInfo(name = "short_description")
     @SerializedName("short_description")
-    private String productShortDescription;
+    private final String productShortDescription;
 
-    @ColumnInfo(name = "sku")
     @SerializedName("sku")
-    private String productSku;
+    private final String productSku;
 
-    @ColumnInfo(name = "price")
     @SerializedName("price")
-    private String productPrice;
+    private final String productPrice;
 
-    @ColumnInfo(name = "regular_price")
     @SerializedName("regular_price")
-    private String productRegularPrice;
+    private final String productRegularPrice;
 
-    @ColumnInfo(name = "sale_price")
     @SerializedName("sale_price")
-    private String productSalePrice;
+    private final String productSalePrice;
 
-    @ColumnInfo(name = "date_on_sale_from")
     @SerializedName("date_on_sale_from")
-    private String productDateOnSaleFrom;
+    private final String productDateOnSaleFrom;
 
-    @ColumnInfo(name = "date_on_sale_from_gmt")
     @SerializedName("date_on_sale_from_gmt")
-    private String productDateOnSaleFromGmt;
+    private final String productDateOnSaleFromGmt;
 
-    @ColumnInfo(name = "date_on_sale_to")
     @SerializedName("date_on_sale_to")
-    private String productDateOnSaleTo;
+    private final String productDateOnSaleTo;
 
-    @ColumnInfo(name = "date_on_sale_to_gmt")
     @SerializedName("date_on_sale_to_gmt")
-    private String productDateOnSaleToGmt;
+    private final String productDateOnSaleToGmt;
 
-    @ColumnInfo(name = "on_sale")
     @SerializedName("on_sale")
-    private Boolean productDateOnSale;
+    private final Boolean productDateOnSale;
 
-    @ColumnInfo(name = "purchasable")
     @SerializedName("purchasable")
-    private Boolean productPurchasable;
+    private final Boolean productPurchasable;
 
-    @ColumnInfo(name = "total_sales")
     @SerializedName("total_sales")
-    private Integer productTotalSales;
+    private final Integer productTotalSales;
 
-    @ColumnInfo(name = "stock_quantity")
     @SerializedName("stock_quantity")
-    private String productStockQuantity;
+    private final String productStockQuantity;
 
-    @ColumnInfo(name = "reviews_allowed")
     @SerializedName("reviews_allowed")
-    private Boolean productReviewsAllowed;
+    private final Boolean productReviewsAllowed;
 
-    @ColumnInfo(name = "average_rating")
     @SerializedName("average_rating")
-    private String productAverageRating;
+    private final String productAverageRating;
 
-    @ColumnInfo(name = "rating_count")
     @SerializedName("rating_count")
-    private Integer productRatingCount;
+    private final Integer productRatingCount;
 
-    @Ignore
-    @ColumnInfo(name = "related_ids")
+
     @SerializedName("related_ids")
-    private List<Integer> productRelatedIds;
+    private final List<Integer> productRelatedIds;
 
-    @ColumnInfo(name = "stock_status")
     @SerializedName("stock_status")
-    private String productStockStatus;
+    private final String productStockStatus;
 
-    @Ignore
-    @ColumnInfo(name = "images")
+
     @SerializedName("images")
-    private List<ProductImages> productImages;
+    private final List<ProductImages> productImages;
 
 
 
-    public Products(Integer productId, String productName, String productSlug, String productdateCreated, String productDateCreatedGmt,
-                    String productDateModified, String productDateModifiedGmt, String productType, String productStatus, Boolean productFeatured,
-                    String productCatalogVisibility, String productDescription, String productShortDescription, String productSku, String productPrice,
-                    String productRegularPrice, String productSalePrice, String productDateOnSaleFrom, String productDateOnSaleFromGmt,
-                    String productDateOnSaleTo, String productDateOnSaleToGmt, Boolean productDateOnSale, Boolean productPurchasable,
-                    Integer productTotalSales, String productStockQuantity, Boolean productReviewsAllowed, String productAverageRating,
-                    Integer productRatingCount, List<Integer> productRelatedIds, String productStockStatus, List<ProductImages> productImages) {
+    public Products(Integer productId, String productName, String productSlug, String productdateCreated,
+                    String productDateCreatedGmt, String productDateModified, String productDateModifiedGmt,
+                    String productType, String productStatus, Boolean productFeatured, String productCatalogVisibility,
+                    String productDescription, String productShortDescription, String productSku, String productPrice,
+                    String productRegularPrice, String productSalePrice, String productDateOnSaleFrom,
+                    String productDateOnSaleFromGmt, String productDateOnSaleTo, String productDateOnSaleToGmt,
+                    Boolean productDateOnSale, Boolean productPurchasable, Integer productTotalSales,
+                    String productStockQuantity, Boolean productReviewsAllowed, String productAverageRating,
+                    Integer productRatingCount, List<Integer> productRelatedIds, String productStockStatus,
+                    List<ProductImages> productImages) {
 
         this.productId = productId;
         this.productName = productName;
