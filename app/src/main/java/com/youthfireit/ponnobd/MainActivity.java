@@ -1,6 +1,7 @@
 package com.youthfireit.ponnobd;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.youthfireit.ponnobd.databinding.ActivityMainBinding;
 import com.youthfireit.ponnobd.fragments.HomeFragment;
+import com.youthfireit.ponnobd.fragments.LoginFragment;
+import com.youthfireit.ponnobd.fragments.RegisterFragment;
 import com.youthfireit.ponnobd.models.ProductImages;
 import com.youthfireit.ponnobd.models.Products;
 import com.youthfireit.ponnobd.network.APIInstance;
@@ -29,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private final static int CART = 3;
     private final static int ACCOUNT = 4;
 
+    private final HomeFragment HOME = new HomeFragment();
+    private final LoginFragment LOGIN = new LoginFragment();
+    private final RegisterFragment REGISTER = new RegisterFragment();
+    private Fragment activeFragment, previousFragment;
+    //private final HomeFragment HOME = new HomeFragment();
+
     ActivityMainBinding binding;
     private FragmentTransaction fragmentTransaction;
 
@@ -40,8 +49,14 @@ public class MainActivity extends AppCompatActivity {
         View v = binding.getRoot();
         setContentView(v);
 
+        
+
+        activeFragment = HOME;
+        previousFragment = HOME;
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, new HomeFragment()).addToBackStack(null).commit();
+        /*fragmentTransaction.add(R.id.fragment_container, HOME,"HOME").hide(HOME).commit();
+                fragmentTransaction.add(R.id.fragment_container,LOGIN,"LOGIN").hide(LOGIN).commit();
+                fragmentTransaction.add(R.id.fragment_container,REGISTER,"REGISTER").hide(REGISTER).commit();*/
 
         binding.bottomNav.add(new MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_outline_home));
         binding.bottomNav.add(new MeowBottomNavigation.Model(WISH_LIST, R.drawable.ic_outline_favorite));
@@ -55,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getId()){
                     case ID_HOME:
                         Toast.makeText(MainActivity.this, "Chumuluku_Home", Toast.LENGTH_SHORT).show();
+                        previousFragment = activeFragment;
+                        activeFragment = HOME;
                         break;
                     case WISH_LIST:
                         Toast.makeText(MainActivity.this, "Chumuluku_wishList", Toast.LENGTH_SHORT).show();
@@ -96,7 +113,12 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .add(R.id.fragment_container,new HomeFragment())
                 .commit();*/
+        loadFragment();
     }
 
+    void loadFragment()
+    {
+        fragmentTransaction.replace(R.id.fragment_container,activeFragment).commit();
+    }
 
 }

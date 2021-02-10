@@ -3,6 +3,7 @@ package com.youthfireit.ponnobd.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,7 @@ public class HomeFragment extends Fragment {
     private ProductsAdapter adapter;
 
 
+
     private HomeViewModel viewModel;
 
 
@@ -58,6 +60,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onRefresh() {
                 /*display(1);*/
+                binding.swipeRefreshLayout.setEnabled(false);
 
             }
         });
@@ -66,6 +69,7 @@ public class HomeFragment extends Fragment {
         binding.productRecyclerview.setLayoutManager(layoutManager);
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
         /*display(1);*/
        /* viewModel.getProducts().observe(getViewLifecycleOwner(),products -> {
             adapter = new ProductsAdapter(products);
@@ -74,7 +78,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        /*PonnobdAPI api = APIInstance.retroInstance().create(PonnobdAPI.class);
+        PonnobdAPI api = APIInstance.retroInstance().create(PonnobdAPI.class);
         Call<List<Products>> call = api.getAllProducts(1);
         call.enqueue(new Callback<List<Products>>() {
             @Override
@@ -93,7 +97,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<List<Products>> call, Throwable t) {
 
             }
-        });*/
+        });
 
         return v;
     }
