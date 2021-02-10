@@ -20,6 +20,4 @@ public interface PonnobdAPI {
     Call<List<Products>> getAllProducts(@Query("page") int page);
 
 
-
-
 }
