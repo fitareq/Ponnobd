@@ -61,9 +61,9 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        binding.productRecyclerview.setHasFixedSize(true);
+        binding.topRatedProductRecyclerview.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
-        binding.productRecyclerview.setLayoutManager(layoutManager);
+        binding.topRatedProductRecyclerview.setLayoutManager(layoutManager);
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         /*display(1);*/

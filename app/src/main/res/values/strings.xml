@@ -14,4 +14,8 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="browse_as_guest">Browse As Guest</string>
+    <string name="categories">Categories</string>
+    <string name="show_all">Show all</string>
+    <string name="category">category</string>
+    <string name="top_rated_products">Top Rated Products</string>
 </resources>

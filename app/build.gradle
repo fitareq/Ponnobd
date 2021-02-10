@@ -67,6 +67,8 @@ dependencies {
     //live data
     //meowBottomNavigation
     implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
+    //automatic image slider
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0'
