@@ -7,7 +7,7 @@
     tools:viewBindingIgnore="true"
     android:layout_margin="@dimen/_2sdp"
     app:cardCornerRadius="@dimen/_5sdp"
-    app:cardElevation="@dimen/_5sdp">
+    app:cardElevation="@dimen/_10sdp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_120sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/chat"/>
+                android:src="@drawable/place_holder"/>
             <TextView
                 android:id="@+id/product_stock_status_textview"
                 android:layout_width="wrap_content"

@@ -1,34 +1,24 @@
 package com.youthfireit.ponnobd;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.youthfireit.ponnobd.databinding.ActivityMainBinding;
 import com.youthfireit.ponnobd.fragments.HomeFragment;
 import com.youthfireit.ponnobd.fragments.LoginFragment;
 import com.youthfireit.ponnobd.fragments.RegisterFragment;
-import com.youthfireit.ponnobd.models.ProductImages;
-import com.youthfireit.ponnobd.models.Products;
-import com.youthfireit.ponnobd.network.APIInstance;
-import com.youthfireit.ponnobd.network.PonnobdAPI;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private final static int ID_HOME = 1;
-    private final static int WISH_LIST = 2;
+    private final static int ORDERS = 2;
     private final static int CART = 3;
     private final static int ACCOUNT = 4;
 
@@ -49,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         View v = binding.getRoot();
         setContentView(v);
 
-        
 
         activeFragment = HOME;
         previousFragment = HOME;
@@ -58,22 +47,24 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.add(R.id.fragment_container,LOGIN,"LOGIN").hide(LOGIN).commit();
                 fragmentTransaction.add(R.id.fragment_container,REGISTER,"REGISTER").hide(REGISTER).commit();*/
 
-        binding.bottomNav.add(new MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_outline_home));
-        binding.bottomNav.add(new MeowBottomNavigation.Model(WISH_LIST, R.drawable.ic_outline_favorite));
-        binding.bottomNav.add(new MeowBottomNavigation.Model(ACCOUNT, R.drawable.ic_outline_account_circle));
-        binding.bottomNav.add(new MeowBottomNavigation.Model(CART,R.drawable.ic_outline_shopping_cart));
+
+        binding.bottomNav.add(new MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_round_home_24));
+        binding.bottomNav.add(new MeowBottomNavigation.Model(ORDERS, R.drawable.ic_round_text_snippet_24));
+        binding.bottomNav.add(new MeowBottomNavigation.Model(CART, R.drawable.ic_round_shopping_cart));
+        binding.bottomNav.add(new MeowBottomNavigation.Model(ACCOUNT, R.drawable.round_person));
+
 
         binding.bottomNav.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
             public void onClickItem(MeowBottomNavigation.Model item) {
 
-                switch (item.getId()){
+                switch (item.getId()) {
                     case ID_HOME:
                         Toast.makeText(MainActivity.this, "Chumuluku_Home", Toast.LENGTH_SHORT).show();
                         previousFragment = activeFragment;
                         activeFragment = HOME;
                         break;
-                    case WISH_LIST:
+                    case ORDERS:
                         Toast.makeText(MainActivity.this, "Chumuluku_wishList", Toast.LENGTH_SHORT).show();
                         break;
                     case ACCOUNT:
@@ -116,9 +107,8 @@ public class MainActivity extends AppCompatActivity {
         loadFragment();
     }
 
-    void loadFragment()
-    {
-        fragmentTransaction.replace(R.id.fragment_container,activeFragment).commit();
+    void loadFragment() {
+        fragmentTransaction.replace(R.id.fragment_container, activeFragment).commit();
     }
 
 }

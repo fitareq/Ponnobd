@@ -5,7 +5,7 @@ plugins {
 android {
 
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.youthfireit.ponnobd"
@@ -51,7 +51,7 @@ dependencies {
 
     //rest api call
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //picasso image loader
     implementation 'com.squareup.picasso:picasso:2.71828'
 

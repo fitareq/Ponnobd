@@ -12,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.youthfireit.ponnobd.R;
 import com.youthfireit.ponnobd.adapter.ProductsAdapter;
@@ -35,11 +36,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private RecyclerView.LayoutManager layoutManager;
     private ProductsAdapter adapter;
-
-
-
     private HomeViewModel viewModel;
-
 
 
     public HomeFragment() {
@@ -47,26 +44,24 @@ public class HomeFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         View v = binding.getRoot();
 
-        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        /*binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                /*display(1);*/
+                *//*display(1);*//*
                 binding.swipeRefreshLayout.setEnabled(false);
 
             }
-        });
-        binding.topRatedProductRecyclerview.setHasFixedSize(true);
+        });*/
+        binding.topRatedProductsRview.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
-        binding.topRatedProductRecyclerview.setLayoutManager(layoutManager);
+        binding.topRatedProductsRview.setLayoutManager(layoutManager);
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -77,25 +72,23 @@ public class HomeFragment extends Fragment {
         });*/
 
 
-
         PonnobdAPI api = APIInstance.retroInstance().create(PonnobdAPI.class);
         Call<List<Products>> call = api.getAllProducts(1);
         call.enqueue(new Callback<List<Products>>() {
             @Override
             public void onResponse(Call<List<Products>> call, Response<List<Products>> response) {
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
 
                     adapter = new ProductsAdapter(response.body());
-                    binding.productRecyclerview.setAdapter(adapter);
+                    binding.topRatedProductsRview.setAdapter(adapter);
                 }
             }
-
 
 
             @Override
             public void onFailure(Call<List<Products>> call, Throwable t) {
 
+                Toast.makeText(getContext(), "Sunam", Toast.LENGTH_SHORT).show();
             }
         });
 
