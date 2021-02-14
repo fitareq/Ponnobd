@@ -138,6 +138,7 @@
                     android:background="@color/blue_100"
                     android:orientation="vertical">
 
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -146,12 +147,19 @@
                         android:text="Top Rated Products"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp" />
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                       />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/top_rated_products_rview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#e0f7fa"/>
+                        android:background="#e0f7fa"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

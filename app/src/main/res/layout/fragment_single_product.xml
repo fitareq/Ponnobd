@@ -10,7 +10,7 @@
         android:id="@+id/toolbar_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="@dimen/_10sdp">
+        app:cardElevation="@dimen/_20sdp">
 
         <FrameLayout
             android:id="@+id/single_product_bar_layout"

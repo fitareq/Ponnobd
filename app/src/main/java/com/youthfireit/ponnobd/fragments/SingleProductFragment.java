@@ -2,6 +2,8 @@ package com.youthfireit.ponnobd.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -30,8 +32,20 @@ public class SingleProductFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentSingleProductBinding.inflate(getLayoutInflater());
         View v = binding.getRoot();
-
-
         return v;
     }
+
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        super.onViewCreated(view, savedInstanceState);
+
+
+    }
+
+
+
+
 }

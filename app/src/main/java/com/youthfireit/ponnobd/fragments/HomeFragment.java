@@ -79,8 +79,13 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Products>> call, Response<List<Products>> response) {
                 if (response.isSuccessful()) {
 
-                    adapter = new ProductsAdapter(response.body());
-                    binding.topRatedProductsRview.setAdapter(adapter);
+                    if (response.body()!=null) {
+
+                        adapter = new ProductsAdapter(response.body());
+                        binding.topRatedProductsRview.setAdapter(adapter);
+                        binding.progressBar.setVisibility(View.GONE);
+                        binding.topRatedProductsRview.setVisibility(View.VISIBLE);
+                    }
                 }
             }
 
