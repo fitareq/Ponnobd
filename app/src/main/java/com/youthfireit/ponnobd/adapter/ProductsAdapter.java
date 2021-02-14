@@ -1,6 +1,7 @@
 package com.youthfireit.ponnobd.adapter;
 
 import android.graphics.Paint;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         String regular_price = current.getProductRegularPrice();
         String stock = current.getProductStockStatus();
         String image = current.getProductImages().get(0).getSrc();
-        String percentage = "-"+calculatePercentage(Integer.parseInt(regular_price),Integer.parseInt(price))+"%";
+        String percentage = calculatePercentage(Integer.parseInt(regular_price),Integer.parseInt(price));
+
 
 
         if (image!=null)
@@ -58,11 +60,24 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             Picasso.get().load(image).into(holder.productsImage);
         }
         holder.productsTitle.setText(title);
-        holder.regularPrice.setText(regular_price);
-        holder.regularPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.discountedPrice.setText(price);
+
+
+
+        if (TextUtils.equals(regular_price,price))
+        {
+            holder.regularPrice.setVisibility(View.GONE);
+            holder.discountedPrice.setText(regular_price);
+        }else {
+            holder.regularPrice.setText(regular_price);
+            holder.regularPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.discountedPrice.setText(price);
+        }
         holder.stockStatus.setText(stock);
-        holder.offerPercentage.setText(percentage);
+        if (!TextUtils.equals(percentage,"0"))
+        {
+            percentage = "-"+percentage+"%";
+            holder.offerPercentage.setText(percentage);
+        }else holder.offerPercentage.setVisibility(View.GONE);
 
     }
 
