@@ -28,7 +28,7 @@
                 android:id="@+id/product_stock_status_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="bottom|end"
                 android:background="@color/purple_200"
                 android:padding="@dimen/_5sdp"
                 android:textColor="@color/white"
