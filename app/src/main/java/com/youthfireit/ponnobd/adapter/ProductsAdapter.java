@@ -46,7 +46,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     public void onBindViewHolder(@NonNull ProductsHolder holder, int position) {
 
         Products current = products.get(position);
-        String p = "৳";
+        String p;
         String title = current.getProductName();
         String price = current.getProductPrice();
         String regular_price = current.getProductRegularPrice();
@@ -65,14 +65,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
         if (TextUtils.equals(regular_price,price))
         {
-            p = p+regular_price;
+            p = "৳"+regular_price;
             holder.regularPrice.setVisibility(View.GONE);
             holder.discountedPrice.setText(p);
         }else {
-            p = p+regular_price;
+            p = "৳"+regular_price;
             holder.regularPrice.setText(p);
             holder.regularPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            p = p+price;
+            p = "৳"+price;
             holder.discountedPrice.setText(p);
         }
         holder.stockStatus.setText(stock);
