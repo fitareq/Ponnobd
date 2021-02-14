@@ -28,10 +28,9 @@
                 android:id="@+id/product_stock_status_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:background="@color/orange_200"
+                android:background="@color/blue_300"
                 android:padding="@dimen/_5sdp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="out of stock"/>
             <TextView
                 android:id="@+id/product_offer_percentage_textview"
@@ -41,7 +40,7 @@
                 android:textColor="@color/white"
                 android:padding="@dimen/_5sdp"
                 android:textStyle="bold"
-                android:background="@color/orange_400"
+                android:background="@color/blue_700"
                 android:text="-32%"/>
         </FrameLayout>
         <RelativeLayout
