@@ -74,25 +74,16 @@
                         android:fontFamily="sans-serif-condensed"
                         android:text="@string/categories"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <TextView
-                        android:id="@+id/show_all_category_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="@string/show_all"
-                        android:textSize="@dimen/_10sdp"
-                        android:textStyle="bold" />
-
-
+                        android:textSize="@dimen/_14sdp"
+                        android:layout_gravity="center_vertical"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/categories_recyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#e0f7fa"
-                        android:scrollbars="horizontal" />
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:padding="@dimen/_2sdp"
+                        />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

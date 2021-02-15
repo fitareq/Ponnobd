@@ -19,114 +19,70 @@ public class Categories {
         private String display;
         @SerializedName("image")
         private ProductImages image;
-        @SerializedName("menu_order")
-        private int menuOrder;
-        @SerializedName("count")
-        private int count;
 
-        /**
-         * No args constructor for use in serialization
-         *
-         */
-        public Categories() {
-        }
 
-        /**
-         *
-         * @param parent
-         * @param image
-         * @param menuOrder
-         * @param display
-         * @param name
-         * @param count
-         * @param description
-         * @param id
-         * @param slug
-         */
-        public Categories(int id, String name, String slug, int parent, String description, String display, ProductImages image, int menuOrder, int count) {
-            super();
-            this.id = id;
-            this.name = name;
-            this.slug = slug;
-            this.parent = parent;
-            this.description = description;
-            this.display = display;
-            this.image = image;
-            this.menuOrder = menuOrder;
-            this.count = count;
-        }
 
-        public int getId() {
-            return id;
-        }
+    public Categories(int id, String name, String slug, int parent, String description, String display, ProductImages image) {
 
-        public void setId(int id) {
-            this.id = id;
-        }
+        this.id = id;
+        this.name = name;
+        this.slug = slug;
+        this.parent = parent;
+        this.description = description;
+        this.display = display;
+        this.image = image;
+    }
 
-        public String getName() {
-            return name;
-        }
 
-        public void setName(String name) {
-            this.name = name;
-        }
 
-        public String getSlug() {
-            return slug;
-        }
+    public int getId() {
 
-        public void setSlug(String slug) {
-            this.slug = slug;
-        }
+        return id;
+    }
 
-        public int getParent() {
-            return parent;
-        }
 
-        public void setParent(int parent) {
-            this.parent = parent;
-        }
 
-        public String getDescription() {
-            return description;
-        }
+    public String getName() {
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
+        return name;
+    }
 
-        public String getDisplay() {
-            return display;
-        }
 
-        public void setDisplay(String display) {
-            this.display = display;
-        }
 
-        public ProductImages getImage() {
-            return image;
-        }
+    public String getSlug() {
 
-        public void setImage(ProductImages image) {
-            this.image = image;
-        }
+        return slug;
+    }
 
-        public int getMenuOrder() {
-            return menuOrder;
-        }
 
-        public void setMenuOrder(int menuOrder) {
-            this.menuOrder = menuOrder;
-        }
 
-        public int getCount() {
-            return count;
-        }
+    public int getParent() {
 
-        public void setCount(int count) {
-            this.count = count;
-        }
+        return parent;
+    }
+
+
+
+    public String getDescription() {
+
+        return description;
+    }
+
+
+
+    public String getDisplay() {
+
+        return display;
+    }
+
+
+
+    public ProductImages getImage() {
+
+        return image;
+    }
+
+
 
 
 }

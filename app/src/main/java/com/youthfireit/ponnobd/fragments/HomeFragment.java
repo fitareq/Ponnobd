@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.youthfireit.ponnobd.R;
+import com.youthfireit.ponnobd.adapter.CategoryAdapter;
 import com.youthfireit.ponnobd.adapter.ProductsAdapter;
 import com.youthfireit.ponnobd.databinding.FragmentHomeBinding;
+import com.youthfireit.ponnobd.models.Categories;
 import com.youthfireit.ponnobd.models.ProductImages;
 import com.youthfireit.ponnobd.models.Products;
 import com.youthfireit.ponnobd.network.APIInstance;
@@ -34,9 +36,11 @@ public class HomeFragment extends Fragment {
 
 
     private FragmentHomeBinding binding;
-    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.LayoutManager layoutManager, categoryManager;
     private ProductsAdapter adapter;
+    private CategoryAdapter categoryAdapter;
     private HomeViewModel viewModel;
+    private PonnobdAPI api;
 
 
     public HomeFragment() {
@@ -60,8 +64,12 @@ public class HomeFragment extends Fragment {
             }
         });*/
         binding.topRatedProductsRview.setHasFixedSize(true);
+        binding.categoriesRecyclerview.setHasFixedSize(true);
+        //binding.categoriesRecyclerview.setNestedScrollingEnabled(false);
+        categoryManager = new GridLayoutManager(getContext(),5,RecyclerView.VERTICAL,false);
         layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
         binding.topRatedProductsRview.setLayoutManager(layoutManager);
+        binding.categoriesRecyclerview.setLayoutManager(categoryManager);
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -72,7 +80,44 @@ public class HomeFragment extends Fragment {
         });*/
 
 
-        PonnobdAPI api = APIInstance.retroInstance().create(PonnobdAPI.class);
+        api = APIInstance.retroInstance().create(PonnobdAPI.class);
+        displayProducts();
+        displayCategories();
+
+        return v;
+    }
+
+
+
+    private void displayCategories()
+    {
+        Call<List<Categories>> call = api.getAllCategory();
+        call.enqueue(new Callback<List<Categories>>() {
+            @Override
+            public void onResponse(Call<List<Categories>> call, Response<List<Categories>> response) {
+                if (response.isSuccessful()) {
+
+                    if (response.body()!=null) {
+
+                        categoryAdapter = new CategoryAdapter(response.body());
+                        binding.categoriesRecyclerview.setAdapter(categoryAdapter);
+                    }
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<List<Categories>> call, Throwable t) {
+
+                Toast.makeText(getContext(), "Sunam", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+    void displayProducts()
+    {
         Call<List<Products>> call = api.getAllProducts(1);
         call.enqueue(new Callback<List<Products>>() {
             @Override
@@ -96,8 +141,6 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), "Sunam", Toast.LENGTH_SHORT).show();
             }
         });
-
-        return v;
     }
 
 /*void display(int page)

@@ -1,5 +1,6 @@
 package com.youthfireit.ponnobd.network;
 
+import com.youthfireit.ponnobd.models.Categories;
 import com.youthfireit.ponnobd.models.Products;
 import com.youthfireit.ponnobd.utills.ProjectConstants;
 
@@ -17,6 +18,6 @@ public interface PonnobdAPI {
     Call<List<Products>> getAllProducts(@Query("page") int page);
 
     @GET("products/categories?consumer_secret=" + ProjectConstants.COUSUMER_SECRET + "&consumer_key=" + ProjectConstants.COUSUMER_KEY)
-    Call<List<Products>> getAllCategory();
+    Call<List<Categories>> getAllCategory();
 
 }
