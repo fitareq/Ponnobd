@@ -1,161 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipe_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_200">
 
-    <include
-        android:id="@+id/home_toolbar"
-        layout="@layout/toolbar"
-        />
-
-    <androidx.core.widget.NestedScrollView
+    <!-- <include
+         android:id="@+id/home_toolbar"
+         layout="@layout/toolbar"
+         />-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/home_toolbar">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
-        <RelativeLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#fff"
+            android:theme="@style/Theme.FragmentTest.PopupOverlay"
+            app:menu="@menu/toolbar_search_menu"
+            app:popupTheme="@style/Theme.Ponnobd"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <androidx.cardview.widget.CardView
-
-                android:id="@+id/slider_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_5sdp"
-                android:layout_margin="@dimen/_5sdp"
-                app:cardElevation="20dp">
-
-                <com.smarteist.autoimageslider.SliderView
-                    android:id="@+id/slider"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_170sdp"
-                    android:background="@color/white"
-                    app:sliderAnimationDuration="1000"
-                    app:sliderAutoCycleDirection="back_and_forth"
-                    app:sliderAutoCycleEnabled="true"
-                    app:sliderIndicatorAnimationDuration="800"
-                    app:sliderIndicatorGravity="center_horizontal|bottom"
-                    app:sliderIndicatorMargin="15dp"
-                    app:sliderIndicatorOrientation="horizontal"
-                    app:sliderIndicatorPadding="3dp"
-                    app:sliderIndicatorRadius="2dp"
-                    app:sliderIndicatorSelectedColor="@color/indigo_800"
-                    app:sliderIndicatorUnselectedColor="#FFF"
-                    app:sliderScrollTimeInSec="3"
-                    app:sliderStartAutoCycle="true" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/categories_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/slider_container"
-                android:layout_margin="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_5sdp"
-                app:cardElevation="20dp"
-                app:cardPreventCornerOverlap="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/blue_100"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_5sdp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="@string/categories"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp"
-                        android:layout_gravity="center_vertical"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/categories_recyclerview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#e0f7fa"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:padding="@dimen/_2sdp"
-                        />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/banner_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/categories_container"
-                android:layout_margin="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_5sdp"
-                app:cardElevation="20dp"
-                app:cardPreventCornerOverlap="true">
-
-                <com.smarteist.autoimageslider.SliderView
-                    android:id="@+id/banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_110sdp"
-                    android:background="@color/white"
-                    app:sliderAnimationDuration="1000"
-                    app:sliderAutoCycleDirection="back_and_forth"
-                    app:sliderIndicatorAnimationDuration="800"
-                    app:sliderIndicatorGravity="center_horizontal|bottom"
-                    app:sliderIndicatorMargin="15dp"
-                    app:sliderIndicatorOrientation="horizontal"
-                    app:sliderIndicatorPadding="3dp"
-                    app:sliderIndicatorRadius="2dp"
-                    app:sliderIndicatorSelectedColor="@color/indigo_800"
-                    app:sliderIndicatorUnselectedColor="#FFF" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/top_rated_product_container"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/banner_container"
-                android:layout_margin="@dimen/_5sdp"
-                app:cardElevation="20dp">
 
-                <LinearLayout
+                >
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/slider_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/blue_100"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
 
+                    app:cardElevation="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="@dimen/_5sdp"
-                        android:text="Top Rated Products"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
-                    <ProgressBar
-                        android:id="@+id/progress_bar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                       />
+                    <com.smarteist.autoimageslider.SliderView
+                        android:layout_marginTop="@dimen/_40sdp"
+                        android:id="@+id/slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_170sdp"
+                        android:background="@color/white"
+                        app:sliderAnimationDuration="1000"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderAutoCycleEnabled="true"
+                        app:sliderIndicatorAnimationDuration="800"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="@color/indigo_800"
+                        app:sliderIndicatorUnselectedColor="#FFF"
+                        app:sliderScrollTimeInSec="3"
+                        app:sliderStartAutoCycle="true" />
+                </androidx.cardview.widget.CardView>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/top_rated_products_rview"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/categories_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/slider_container"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="20dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#e0f7fa"
-                        android:visibility="gone"/>
-                </LinearLayout>
+                        android:background="@color/blue_100"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_5sdp">
 
-            </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="@string/categories"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/categories_recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="#e0f7fa"
+                            android:padding="@dimen/_2sdp" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/banner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/categories_container"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="20dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_110sdp"
+                        android:background="@color/white"
+                        app:sliderAnimationDuration="1000"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderIndicatorAnimationDuration="800"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="@color/indigo_800"
+                        app:sliderIndicatorUnselectedColor="#FFF" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/top_rated_product_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/banner_container"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:cardElevation="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/blue_100"
+                        android:orientation="vertical">
 
 
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
-</RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-condensed"
+                            android:padding="@dimen/_5sdp"
+                            android:text="Top Rated Products"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <ProgressBar
+                            android:id="@+id/progress_bar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/top_rated_products_rview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#e0f7fa"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
