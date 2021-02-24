@@ -8,8 +8,7 @@
 
     <include
         android:id="@+id/home_toolbar"
-        layout="@layout/toolbar"
-        />
+        layout="@layout/toolbar" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -26,8 +25,8 @@
                 android:id="@+id/slider_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_5sdp"
                 android:layout_margin="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
                 app:cardElevation="20dp">
 
                 <com.smarteist.autoimageslider.SliderView
@@ -138,19 +137,19 @@
                         android:text="Top Rated Products"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp" />
+
                     <ProgressBar
                         android:id="@+id/progress_bar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                       />
+                        android:layout_gravity="center_horizontal" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/top_rated_products_rview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#e0f7fa"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

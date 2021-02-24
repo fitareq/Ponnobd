@@ -29,6 +29,7 @@
         app:mbn_defaultIconColor="@color/black"
         app:mbn_rippleColor="#2f424242"
         app:mbn_selectedIconColor="@color/white"
+
         app:mbn_shadowColor="#1f212121" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
