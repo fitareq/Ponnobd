@@ -2,6 +2,8 @@ package com.youthfireit.ponnobd.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,6 +27,7 @@ import com.youthfireit.ponnobd.network.APIInstance;
 import com.youthfireit.ponnobd.network.PonnobdAPI;
 import com.youthfireit.ponnobd.viewmodels.HomeViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,7 +35,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ProductsAdapter.ProductAdapterListener {
 
 
     private FragmentHomeBinding binding;
@@ -41,10 +44,15 @@ public class HomeFragment extends Fragment {
     private CategoryAdapter categoryAdapter;
     private HomeViewModel viewModel;
     private PonnobdAPI api;
+    private List<Products> products = new ArrayList<>();
+    private int page = 1;
+    private int position;
+
 
 
     public HomeFragment() {
         // Required empty public constructor
+
     }
 
 
@@ -54,6 +62,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         View v = binding.getRoot();
+
 
         /*binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -66,6 +75,7 @@ public class HomeFragment extends Fragment {
         binding.topRatedProductsRview.setHasFixedSize(true);
         binding.categoriesRecyclerview.setHasFixedSize(true);
         //binding.categoriesRecyclerview.setNestedScrollingEnabled(false);
+        binding.topRatedProductsRview.setNestedScrollingEnabled(false);
         categoryManager = new GridLayoutManager(getContext(),5,RecyclerView.VERTICAL,false);
         layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
         binding.topRatedProductsRview.setLayoutManager(layoutManager);
@@ -80,8 +90,31 @@ public class HomeFragment extends Fragment {
         });*/
 
 
+        binding.nestedScroll.setSmoothScrollingEnabled(true);
+
+        binding.nestedScroll.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                String i = scrollX+"@"+scrollY+"@"+oldScrollX+"@"+oldScrollY;
+                Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+                if (scrollY>oldScrollY)
+                    binding.appbarLayout.setVisibility(View.GONE);
+                else binding.appbarLayout.setVisibility(View.VISIBLE);
+            }
+        });
         api = APIInstance.retroInstance().create(PonnobdAPI.class);
-        displayProducts();
+        binding.topRatedProductsRview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+
+                super.onScrollStateChanged(recyclerView, newState);
+
+
+            }
+        });
+
+        displayProducts(page);
         displayCategories();
 
         return v;
@@ -116,17 +149,17 @@ public class HomeFragment extends Fragment {
 
 
 
-    void displayProducts()
+    void displayProducts(int page)
     {
-        Call<List<Products>> call = api.getAllProducts(1);
+        Call<List<Products>> call = api.getAllProducts(page);
         call.enqueue(new Callback<List<Products>>() {
             @Override
             public void onResponse(Call<List<Products>> call, Response<List<Products>> response) {
                 if (response.isSuccessful()) {
 
                     if (response.body()!=null) {
-
-                        adapter = new ProductsAdapter(response.body());
+                        products.addAll(response.body());
+                        adapter = new ProductsAdapter(products, HomeFragment.this);
                         binding.topRatedProductsRview.setAdapter(adapter);
                         binding.progressBar.setVisibility(View.GONE);
                         binding.topRatedProductsRview.setVisibility(View.VISIBLE);
@@ -141,6 +174,14 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), "Sunam", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+
+    @Override
+    public void productScrollPosition(int position) {
+        this.position = position;
+
     }
 
 /*void display(int page)

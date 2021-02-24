@@ -21,12 +21,13 @@ import java.util.List;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductsHolder> {
 
     private List<Products> products;
+    private ProductAdapterListener productAdapterListener;
 
 
-
-    public ProductsAdapter(List<Products> products) {
+    public ProductsAdapter(List<Products> products, ProductAdapterListener productAdapterListener) {
 
         this.products = products;
+        this.productAdapterListener = productAdapterListener;
     }
 
 
@@ -46,6 +47,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     public void onBindViewHolder(@NonNull ProductsHolder holder, int position) {
 
         Products current = products.get(position);
+        int po = holder.getLayoutPosition();
+        productAdapterListener.productScrollPosition(po);
         String p;
         String title = current.getProductName();
         String price = current.getProductPrice();
@@ -124,5 +127,10 @@ String calculatePercentage(int regularprice, int discountedprice)
 
     int percentage = (diff*100)/regularprice;
     return String.valueOf(percentage);
+}
+
+public interface ProductAdapterListener
+{
+    void productScrollPosition(int position);
 }
 }
