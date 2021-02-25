@@ -18,120 +18,120 @@ public class Products {
 
 
     @SerializedName("name")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "name")
     private final String productName;
 
 
     @SerializedName("slug")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "slug")
     private final String productSlug;
 
 
     @SerializedName("date_created")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "date_created")
     private final String productdateCreated;
 
 
     @SerializedName("date_created_gmt")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "date_created_gmt")
     private final String productDateCreatedGmt;
 
 
     @SerializedName("date_modified")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "date_modified")
     private final String productDateModified;
 
 
     @SerializedName("date_modified_gmt")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "date_modified_gmt")
     private final String productDateModifiedGmt;
 
 
     @SerializedName("type")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "type")
     private final String productType;
 
 
     @SerializedName("status")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "status")
     private final String productStatus;
 
 
     @SerializedName("featured")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "featured")
     private final Boolean productFeatured;
 
 
     @SerializedName("catalog_visibility")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "catalog_visibility")
     private final String productCatalogVisibility;
 
     @SerializedName("description")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "description")
     private final String productDescription;
 
     @SerializedName("short_description")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "short_description")
     private final String productShortDescription;
 
     @SerializedName("sku")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "sku")
     private final String productSku;
 
     @SerializedName("price")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "price")
     private final String productPrice;
 
     @SerializedName("regular_price")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "regular_price")
     private final String productRegularPrice;
 
     @SerializedName("sale_price")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "sale_price")
     private final String productSalePrice;
 
     @SerializedName("date_on_sale_from")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "date_on_sale_from")
     private final String productDateOnSaleFrom;
 
     @SerializedName("date_on_sale_from_gmt")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "date_on_sale_from_gmt")
     private final String productDateOnSaleFromGmt;
 
     @SerializedName("date_on_sale_to")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "date_on_sale_to")
     private final String productDateOnSaleTo;
 
     @SerializedName("date_on_sale_to_gmt")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "date_on_sale_to_gmt")
     private final String productDateOnSaleToGmt;
 
     @SerializedName("on_sale")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "on_sale")
     private final Boolean productDateOnSale;
 
     @SerializedName("purchasable")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "purchasable")
     private final Boolean productPurchasable;
 
     @SerializedName("total_sales")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "total_sales")
     private final Integer productTotalSales;
 
     @SerializedName("stock_quantity")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "stock_quantity")
     private final String productStockQuantity;
 
     @SerializedName("reviews_allowed")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "reviews_allowed")
     private final Boolean productReviewsAllowed;
 
     @SerializedName("average_rating")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "average_rating")
     private final String productAverageRating;
 
     @SerializedName("rating_count")
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "rating_count")
     private final Integer productRatingCount;
 
 
