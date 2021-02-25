@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.youthfireit.ponnobd.R;
-import com.youthfireit.ponnobd.models.Categories;
-import com.youthfireit.ponnobd.models.ProductImages;
+import com.youthfireit.ponnobd.roomdata.models.Categories;
+import com.youthfireit.ponnobd.roomdata.models.ProductImages;
 
 import java.util.List;
 

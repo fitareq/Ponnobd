@@ -1,13 +1,12 @@
 package com.youthfireit.ponnobd.network;
 
-import com.youthfireit.ponnobd.models.Categories;
-import com.youthfireit.ponnobd.models.Products;
+import com.youthfireit.ponnobd.roomdata.models.Categories;
+import com.youthfireit.ponnobd.roomdata.models.Products;
 import com.youthfireit.ponnobd.utills.ProjectConstants;
 
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 

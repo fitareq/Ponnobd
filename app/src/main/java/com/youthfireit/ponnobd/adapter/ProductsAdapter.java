@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.youthfireit.ponnobd.R;
-import com.youthfireit.ponnobd.models.Products;
+import com.youthfireit.ponnobd.roomdata.models.Products;
 import com.youthfireit.ponnobd.utills.NavRoutes;
 
 import java.util.List;

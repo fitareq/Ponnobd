@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.youthfireit.ponnobd.databinding.FragmentSingleProductBinding;
-import com.youthfireit.ponnobd.models.Products;
+import com.youthfireit.ponnobd.roomdata.models.Products;
 import com.youthfireit.ponnobd.network.APIInstance;
 import com.youthfireit.ponnobd.network.PonnobdAPI;
 

@@ -1,4 +1,4 @@
-package com.youthfireit.ponnobd.models;
+package com.youthfireit.ponnobd.roomdata.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
