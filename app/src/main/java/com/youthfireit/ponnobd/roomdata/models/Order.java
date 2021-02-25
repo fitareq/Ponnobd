@@ -1,9 +1,12 @@
 package com.youthfireit.ponnobd.roomdata.models;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Entity(tableName = "order_table")
 public class Order {
 
     @SerializedName("payment_method")

@@ -5,17 +5,17 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.youthfireit.ponnobd.roomdata.models.Products;
+import com.youthfireit.ponnobd.roomdata.models.Categories;
 
 import java.util.List;
 
 @Dao
-public interface ProductsDao {
+public interface CategoryDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insertProductList(List<Products> products);
-    @Query("SELECT * FROM all_product")
-    List<Products> getAllProducts();
+    void insertCategoryList(List<Categories> categories);
+    @Query("SELECT * FROM category_table")
+    List<Categories> getAllCategory();
 
 
 }
