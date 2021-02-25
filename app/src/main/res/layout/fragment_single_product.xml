@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SingleProductFragment">
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/toolbar_card"
@@ -162,7 +162,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/single_product_description_tview"
                 android:text="Internet Used Information: Android Operating System used WiFi System used, PlayStore, Aptoide TV Youtube, Facebook, Viber, Whatapps, Wireless Mouse and Mouse Keyboard etc used."
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"/>
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -183,7 +184,7 @@
             android:text="Add to cart"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
 
         <TextView
             android:layout_width="0dp"
@@ -194,7 +195,7 @@
             android:text="Buy now"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_13sdp" />
     </LinearLayout>
 
 </RelativeLayout>

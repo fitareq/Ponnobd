@@ -13,18 +13,21 @@ import com.youthfireit.ponnobd.databinding.ActivityMainBinding;
 import com.youthfireit.ponnobd.fragments.HomeFragment;
 import com.youthfireit.ponnobd.fragments.LoginFragment;
 import com.youthfireit.ponnobd.fragments.RegisterFragment;
+import com.youthfireit.ponnobd.fragments.SingleProductFragment;
+import com.youthfireit.ponnobd.utills.NavRoutes;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavRoutes.HomeFragmentEvents {
 
     private final static int ID_HOME = 1;
     private final static int ORDERS = 2;
     private final static int CART = 3;
     private final static int ACCOUNT = 4;
 
-    private final HomeFragment HOME = new HomeFragment();
+    private final HomeFragment HOME = new HomeFragment(this);
     private final LoginFragment LOGIN = new LoginFragment();
     private final RegisterFragment REGISTER = new RegisterFragment();
+    //private final SingleProductFragment SINGLE = new SingleProductFragment();
     private Fragment activeFragment, previousFragment;
     //private final HomeFragment HOME = new HomeFragment();
 
@@ -108,7 +111,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void loadFragment() {
-        fragmentTransaction.replace(R.id.fragment_container, activeFragment).commit();
+        /*fragmentTransaction.replace(R.id.fragment_container, activeFragment).commit();*/
+         getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container,activeFragment)
+                .commit();
     }
+
+
+
+    @Override
+    public void loadSingleProduct(int id) {
+        activeFragment = new SingleProductFragment(id);
+        loadFragment();
+    }
+
+
+
 
 }

@@ -1,7 +1,6 @@
 package com.youthfireit.ponnobd.models;
 
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Billing {
@@ -9,25 +8,25 @@ public class Billing {
 
     @SerializedName("first_name")
 
-    private String firstName;
+    private final String firstName;
     @SerializedName("last_name")
-    private String lastName;
+    private final String lastName;
     @SerializedName("address_1")
-    private String address1;
+    private final String address1;
     @SerializedName("address_2")
-    private String address2;
+    private final String address2;
     @SerializedName("city")
-    private String city;
+    private final String city;
     @SerializedName("state")
-    private String state;
+    private final String state;
     @SerializedName("postcode")
-    private String postcode;
+    private final String postcode;
     @SerializedName("country")
-    private String country;
+    private final String country;
     @SerializedName("email")
-    private String email;
+    private final String email;
     @SerializedName("phone")
-    private String phone;
+    private final String phone;
 
     public Billing(String firstName, String lastName, String address1, String address2,
                    String city, String state, String postcode, String country,

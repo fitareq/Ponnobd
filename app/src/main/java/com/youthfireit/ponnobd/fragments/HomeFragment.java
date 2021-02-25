@@ -1,30 +1,26 @@
 package com.youthfireit.ponnobd.fragments;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.core.widget.NestedScrollView;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.youthfireit.ponnobd.R;
+import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.youthfireit.ponnobd.adapter.CategoryAdapter;
 import com.youthfireit.ponnobd.adapter.ProductsAdapter;
 import com.youthfireit.ponnobd.databinding.FragmentHomeBinding;
 import com.youthfireit.ponnobd.models.Categories;
-import com.youthfireit.ponnobd.models.ProductImages;
 import com.youthfireit.ponnobd.models.Products;
 import com.youthfireit.ponnobd.network.APIInstance;
 import com.youthfireit.ponnobd.network.PonnobdAPI;
+import com.youthfireit.ponnobd.utills.NavRoutes;
 import com.youthfireit.ponnobd.viewmodels.HomeViewModel;
 
 import java.util.ArrayList;
@@ -35,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class HomeFragment extends Fragment implements ProductsAdapter.ProductAdapterListener {
+public class HomeFragment extends Fragment implements ProductsAdapter.ProductAdapterListener, NavRoutes.ProductsAdapterEvents {
 
 
     private FragmentHomeBinding binding;
@@ -47,12 +43,13 @@ public class HomeFragment extends Fragment implements ProductsAdapter.ProductAda
     private List<Products> products = new ArrayList<>();
     private int page = 1;
     private int position;
+    private NavRoutes.HomeFragmentEvents homeFragmentEvents;
 
 
 
-    public HomeFragment() {
+    public HomeFragment(NavRoutes.HomeFragmentEvents homeFragmentEvents) {
         // Required empty public constructor
-
+        this.homeFragmentEvents = homeFragmentEvents;
     }
 
 
@@ -96,8 +93,8 @@ public class HomeFragment extends Fragment implements ProductsAdapter.ProductAda
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
 
-                String i = scrollX+"@"+scrollY+"@"+oldScrollX+"@"+oldScrollY;
-                Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+                /*String i = scrollX+"@"+scrollY+"@"+oldScrollX+"@"+oldScrollY;
+                Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();*/
                 if (scrollY>oldScrollY)
                     binding.appbarLayout.setVisibility(View.GONE);
                 else binding.appbarLayout.setVisibility(View.VISIBLE);
@@ -159,7 +156,7 @@ public class HomeFragment extends Fragment implements ProductsAdapter.ProductAda
 
                     if (response.body()!=null) {
                         products.addAll(response.body());
-                        adapter = new ProductsAdapter(products, HomeFragment.this);
+                        adapter = new ProductsAdapter(products, HomeFragment.this,HomeFragment.this);
                         binding.topRatedProductsRview.setAdapter(adapter);
                         binding.progressBar.setVisibility(View.GONE);
                         binding.topRatedProductsRview.setVisibility(View.VISIBLE);
@@ -171,7 +168,7 @@ public class HomeFragment extends Fragment implements ProductsAdapter.ProductAda
             @Override
             public void onFailure(Call<List<Products>> call, Throwable t) {
 
-                Toast.makeText(getContext(), "Sunam", Toast.LENGTH_SHORT).show();
+                binding.progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -182,6 +179,13 @@ public class HomeFragment extends Fragment implements ProductsAdapter.ProductAda
     public void productScrollPosition(int position) {
         this.position = position;
 
+    }
+
+
+
+    @Override
+    public void itemClickListener(int id) {
+        homeFragmentEvents.loadSingleProduct(id);
     }
 
 /*void display(int page)

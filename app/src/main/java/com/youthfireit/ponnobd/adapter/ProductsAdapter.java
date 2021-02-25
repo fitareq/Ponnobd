@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.youthfireit.ponnobd.R;
 import com.youthfireit.ponnobd.models.Products;
+import com.youthfireit.ponnobd.utills.NavRoutes;
 
 import java.util.List;
 
@@ -22,12 +23,16 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     private List<Products> products;
     private ProductAdapterListener productAdapterListener;
+    private NavRoutes.ProductsAdapterEvents productsAdapterEvents;
+    private View item;
+    int id;
 
 
-    public ProductsAdapter(List<Products> products, ProductAdapterListener productAdapterListener) {
+    public ProductsAdapter(List<Products> products, ProductAdapterListener productAdapterListener,NavRoutes.ProductsAdapterEvents productsAdapterEvents) {
 
         this.products = products;
         this.productAdapterListener = productAdapterListener;
+        this.productsAdapterEvents = productsAdapterEvents;
     }
 
 
@@ -50,6 +55,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         int po = holder.getLayoutPosition();
         productAdapterListener.productScrollPosition(po);
         String p;
+        id = current.getProductId();
         String title = current.getProductName();
         String price = current.getProductPrice();
         String regular_price = current.getProductRegularPrice();
@@ -85,6 +91,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             holder.offerPercentage.setText(percentage);
         }else holder.offerPercentage.setVisibility(View.GONE);
 
+        item.setOnClickListener(v -> productsAdapterEvents.itemClickListener(id));
     }
 
 
@@ -106,12 +113,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     public ProductsHolder(@NonNull View itemView) {
 
         super(itemView);
+        item = itemView;
         productsImage = itemView.findViewById(R.id.product_imageview);
         productsTitle = itemView.findViewById(R.id.product_title_textview);
         regularPrice = itemView.findViewById(R.id.product_regular_price_textview);
         discountedPrice = itemView.findViewById(R.id.product_discounted_price_textview);
         offerPercentage = itemView.findViewById(R.id.product_offer_percentage_textview);
         stockStatus = itemView.findViewById(R.id.product_stock_status_textview);
+
+
     }
 
 

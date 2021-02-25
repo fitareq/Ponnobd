@@ -1,120 +1,196 @@
 package com.youthfireit.ponnobd.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-
+@Entity(tableName = "all_product")
 public class Products {
 
 
     @SerializedName("id")
+    @ColumnInfo(name = "id")
     private final Integer productId;
 
 
     @SerializedName("name")
+    @ColumnInfo(name = "id")
     private final String productName;
 
 
     @SerializedName("slug")
+    @ColumnInfo(name = "id")
     private final String productSlug;
 
 
     @SerializedName("date_created")
+    @ColumnInfo(name = "id")
     private final String productdateCreated;
 
 
     @SerializedName("date_created_gmt")
+    @ColumnInfo(name = "id")
     private final String productDateCreatedGmt;
 
 
     @SerializedName("date_modified")
+    @ColumnInfo(name = "id")
     private final String productDateModified;
 
 
     @SerializedName("date_modified_gmt")
+    @ColumnInfo(name = "id")
     private final String productDateModifiedGmt;
 
 
     @SerializedName("type")
+    @ColumnInfo(name = "id")
     private final String productType;
 
 
     @SerializedName("status")
+    @ColumnInfo(name = "id")
     private final String productStatus;
 
 
     @SerializedName("featured")
+    @ColumnInfo(name = "id")
     private final Boolean productFeatured;
 
 
     @SerializedName("catalog_visibility")
+    @ColumnInfo(name = "id")
     private final String productCatalogVisibility;
 
     @SerializedName("description")
+    @ColumnInfo(name = "id")
     private final String productDescription;
 
     @SerializedName("short_description")
+    @ColumnInfo(name = "id")
     private final String productShortDescription;
 
     @SerializedName("sku")
+    @ColumnInfo(name = "id")
     private final String productSku;
 
     @SerializedName("price")
+    @ColumnInfo(name = "id")
     private final String productPrice;
 
     @SerializedName("regular_price")
+    @ColumnInfo(name = "id")
     private final String productRegularPrice;
 
     @SerializedName("sale_price")
+    @ColumnInfo(name = "id")
     private final String productSalePrice;
 
     @SerializedName("date_on_sale_from")
+    @ColumnInfo(name = "id")
     private final String productDateOnSaleFrom;
 
     @SerializedName("date_on_sale_from_gmt")
+    @ColumnInfo(name = "id")
     private final String productDateOnSaleFromGmt;
 
     @SerializedName("date_on_sale_to")
+    @ColumnInfo(name = "id")
     private final String productDateOnSaleTo;
 
     @SerializedName("date_on_sale_to_gmt")
+    @ColumnInfo(name = "id")
     private final String productDateOnSaleToGmt;
 
     @SerializedName("on_sale")
+    @ColumnInfo(name = "id")
     private final Boolean productDateOnSale;
 
     @SerializedName("purchasable")
+    @ColumnInfo(name = "id")
     private final Boolean productPurchasable;
 
     @SerializedName("total_sales")
+    @ColumnInfo(name = "id")
     private final Integer productTotalSales;
 
     @SerializedName("stock_quantity")
+    @ColumnInfo(name = "id")
     private final String productStockQuantity;
 
     @SerializedName("reviews_allowed")
+    @ColumnInfo(name = "id")
     private final Boolean productReviewsAllowed;
 
     @SerializedName("average_rating")
+    @ColumnInfo(name = "id")
     private final String productAverageRating;
 
     @SerializedName("rating_count")
+    @ColumnInfo(name = "id")
     private final Integer productRatingCount;
 
 
+    @Ignore
     @SerializedName("related_ids")
-    private final List<Integer> productRelatedIds;
+    private  List<Integer> productRelatedIds;
 
     @SerializedName("stock_status")
+    @ColumnInfo(name = "stock_status")
     private final String productStockStatus;
 
 
+    @Ignore
     @SerializedName("images")
-    private final List<ProductImages> productImages;
+    private  List<ProductImages> productImages;
 
 
 
+    public Products(Integer productId, String productName, String productSlug, String productdateCreated, String productDateCreatedGmt,
+                    String productDateModified, String productDateModifiedGmt, String productType, String productStatus, Boolean productFeatured,
+                    String productCatalogVisibility, String productDescription, String productShortDescription, String productSku, String productPrice,
+                    String productRegularPrice, String productSalePrice, String productDateOnSaleFrom, String productDateOnSaleFromGmt,
+                    String productDateOnSaleTo, String productDateOnSaleToGmt, Boolean productDateOnSale, Boolean productPurchasable, Integer productTotalSales,
+                    String productStockQuantity, Boolean productReviewsAllowed, String productAverageRating, Integer productRatingCount, String productStockStatus) {
+
+        this.productId = productId;
+        this.productName = productName;
+        this.productSlug = productSlug;
+        this.productdateCreated = productdateCreated;
+        this.productDateCreatedGmt = productDateCreatedGmt;
+        this.productDateModified = productDateModified;
+        this.productDateModifiedGmt = productDateModifiedGmt;
+        this.productType = productType;
+        this.productStatus = productStatus;
+        this.productFeatured = productFeatured;
+        this.productCatalogVisibility = productCatalogVisibility;
+        this.productDescription = productDescription;
+        this.productShortDescription = productShortDescription;
+        this.productSku = productSku;
+        this.productPrice = productPrice;
+        this.productRegularPrice = productRegularPrice;
+        this.productSalePrice = productSalePrice;
+        this.productDateOnSaleFrom = productDateOnSaleFrom;
+        this.productDateOnSaleFromGmt = productDateOnSaleFromGmt;
+        this.productDateOnSaleTo = productDateOnSaleTo;
+        this.productDateOnSaleToGmt = productDateOnSaleToGmt;
+        this.productDateOnSale = productDateOnSale;
+        this.productPurchasable = productPurchasable;
+        this.productTotalSales = productTotalSales;
+        this.productStockQuantity = productStockQuantity;
+        this.productReviewsAllowed = productReviewsAllowed;
+        this.productAverageRating = productAverageRating;
+        this.productRatingCount = productRatingCount;
+        this.productStockStatus = productStockStatus;
+    }
+
+
+
+    @Ignore
     public Products(Integer productId, String productName, String productSlug, String productdateCreated,
                     String productDateCreatedGmt, String productDateModified, String productDateModifiedGmt,
                     String productType, String productStatus, Boolean productFeatured, String productCatalogVisibility,
